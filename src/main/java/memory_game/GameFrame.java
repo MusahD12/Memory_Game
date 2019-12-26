@@ -53,8 +53,8 @@ public class GameFrame extends JFrame {
     boolean gameOver;
     static JButton[] buttons;
     static String pics[] = {"Icons/m2.jpg", "Icons/m3.jpg", "Icons/m4.jpg", "Icons/m5.jpg",
-            "Icons/m6.jpg", "Icons/m7.jpg", "Icons/m8.jpg", "Icons/m9.jpg", "Icons/m2.jpg", "Icons/m3.jpg", "Icons/m4.jpg", "Icons/m5.jpg",
-            "Icons/m6.jpg", "Icons/m7.jpg", "Icons/m8.jpg", "Icons/m9.jpg", "Icons/m9.jpg"};
+            "Icons/m6.jpg", "Icons/m7.jpg", "Icons/m8.jpg", "Icons/m9.jpg", "Icons/m10.jpg", "Icons/m11.jpg", "Icons/m12.jpg", "Icons/m13.jpg",
+            "Icons/m14.jpg", "Icons/15.jpg", "Icons/16.jpg", "Icons/m17.jpg", "Icons/m18.jpg", "Icons/m19.jpg"};
     Game game;
 
     //Frame set up

@@ -14,7 +14,7 @@ public class Game {
                 this.board = new Board(4, 4);
                 break;
             case MEDIUM:
-                this.board = new Board(5, 5);
+                this.board = new Board(6, 6);
                 break;
             default :
                 this.board = new Board(4, 4);

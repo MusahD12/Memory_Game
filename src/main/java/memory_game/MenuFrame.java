@@ -10,9 +10,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import static main.java.memory_game.models.Level.EASY;
-import static main.java.memory_game.models.Level.MEDIUM;
+import static main.java.memory_game.models.Level.*;
 import static main.java.memory_game.models.OpponentType.CPU;
+import static main.java.memory_game.models.OpponentType.HUMAN;
 
 public class MenuFrame {
 
@@ -86,11 +86,19 @@ public class MenuFrame {
             public void actionPerformed(ActionEvent actionEvent) {
                 Game g;
                 if(b1.isSelected() && b4.isSelected())
-                    g = new Game(EASY);
+                    g = new Game(EASY,CPU);
                 else if(b2.isSelected() && b4.isSelected())
-                    g = new Game(MEDIUM);
+                    g = new Game(MEDIUM,CPU);
+                else if(b3.isSelected() && b4.isSelected())
+                    g = new Game(GOODLUCK,CPU);
+                else if(b1.isSelected() && b5.isSelected())
+                    g = new Game(GOODLUCK,HUMAN);
+                else if(b1.isSelected() && b5.isSelected())
+                    g = new Game(GOODLUCK,HUMAN);
+                else if(b1.isSelected() && b5.isSelected())
+                    g = new Game(GOODLUCK,HUMAN);
                 else
-                    g = new Game(EASY);
+                    g = new Game(EASY,CPU);
 
                 new GameFrame(g);
             }

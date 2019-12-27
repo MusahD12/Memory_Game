@@ -1,6 +1,7 @@
 package main.java.memory_game;
 
 import main.java.memory_game.database.HighscoreDB;
+import main.java.memory_game.models.Board;
 import main.java.memory_game.models.Game;
 import main.java.memory_game.models.Player;
 
@@ -24,28 +25,11 @@ public class GameFrame extends JFrame {
     int openImages;
     JLabel scoreBoard;
     JLabel scoreBoard2;
-    JLabel setDifficulty;
-    JLabel oponnent;
-    JButton about;
-    JButton highscore;
-    JButton start;
-    JRadioButton b1;
-    JRadioButton b2;
-    JRadioButton b3;
-    JRadioButton b4;
-    JRadioButton b5;
-    ButtonGroup g1;
-    ButtonGroup g2;
     JPanel scoring;
     JPanel map;
-    JPanel menu2;
-    JPanel menu3;
-    JPanel menu4;
     JPanel buttonPnl;
     JButton restart;
     static JLabel number;
-    JLabel menu;
-    JMenuItem difficulty;
     JFrame f;
     Timer timer = null;
     static int score;
@@ -53,9 +37,12 @@ public class GameFrame extends JFrame {
     boolean gameOver;
     static JButton[] buttons;
     static String pics[] = {"Icons/m2.jpg", "Icons/m3.jpg", "Icons/m4.jpg", "Icons/m5.jpg",
-            "Icons/m6.jpg", "Icons/m7.jpg", "Icons/m8.jpg", "Icons/m9.jpg", "Icons/m10.jpg", "Icons/m11.jpg", "Icons/m12.jpg", "Icons/m13.jpg",
-            "Icons/m14.jpg", "Icons/15.jpg", "Icons/16.jpg", "Icons/m17.jpg", "Icons/m18.jpg", "Icons/m19.jpg"};
+            "Icons/m6.jpg", "Icons/m7.jpg", "Icons/m8.jpg", "Icons/m9.jpg", "Icons/m10.jpg",
+            "Icons/m11.jpg", "Icons/m12.jpg", "Icons/m13.jpg","Icons/m14.jpg", "Icons/15.jpg",
+            "Icons/16.jpg", "Icons/m17.jpg", "Icons/m18.jpg", "Icons/m19.jpg"};
     Game game;
+    Board board;
+    
 
     //Frame set up
     public GameFrame(Game game) {
@@ -127,13 +114,7 @@ public class GameFrame extends JFrame {
         restart = new JButton("Restart");
         restart.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //if (e.getSource() == restart)
-                //restart();
                 restart();
-                //rnd = new Random();
-                //random();
-                //scoreBoard2.setText(Integer.toString(score=0));
-
             }
         });
         scoring.add(scoreBoard);
@@ -146,11 +127,14 @@ public class GameFrame extends JFrame {
 
 
     public void restart() {
-        for (int i = 0; i < 16; i++) {
+        int nbButton = this.game.board.columns * this.game.board.rows;
+
+
+        for (int i = 0; i < nbButton; i++) {
             buttons[i].setIcon(m1);
         }
-        for (int i = 0; i < 16; i++) {
-            int j = rnd.nextInt(16);
+        for (int i = 0; i < nbButton; i++) {
+            int j = rnd.nextInt(nbButton);
             icon = icons[i];
             icons[i] = icons[j];
             icons[j] = icon;
@@ -158,8 +142,10 @@ public class GameFrame extends JFrame {
         scoreBoard2.setText(Integer.toString(score = 0));
 
     }
-
+//J'ai pas su mettre addbuttonlistener dans une classe a part -> problem avec le timer
     class AddButtonListener implements ActionListener {
+        int nbButton = this.game.board.columns * this.game.board.rows;
+        //jeux se lance si tu remplace nbButton par 16
         public void actionPerformed(ActionEvent e) {
             if (timer.isRunning())
                 return;
@@ -167,7 +153,7 @@ public class GameFrame extends JFrame {
             openImages++;
             System.out.println(openImages);
 
-            for (int i = 0; i < 16; i++) {
+            for (int i = 0; i < nbButton; i++) {
                 if (e.getSource() == buttons[i]) {
                     buttons[i].setIcon(icons[i]);
                     clicks = i;
@@ -183,7 +169,7 @@ public class GameFrame extends JFrame {
                 } else {
                     score++;
                     scoreBoard2.setText(Integer.toString(score * 100));
-                    if (score == 8) {
+                    if (score == nbButton/2) {
 
                         scoreBoard.setText(" You won!");
                         JOptionPane.showMessageDialog(f, "You won!");

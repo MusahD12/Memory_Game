@@ -7,7 +7,7 @@ public class Game {
     public String player1;
     public String player2;
 
-    public Game(Level level) {
+    public Game(Level level, OpponentType opponentType) {
         switch (level) {
             case EASY:
             case GOODLUCK:

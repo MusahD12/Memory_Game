@@ -1,9 +1,7 @@
 package main.java.memory_game;
 
-import main.java.memory_game.database.HighscoreDB;
 import main.java.memory_game.models.Board;
 import main.java.memory_game.models.Game;
-import main.java.memory_game.models.Player;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -15,34 +13,35 @@ import java.util.Random;
 public class GameFrame extends JFrame {
 
     ImageIcon m1 = new ImageIcon(this.getClass().getResource("/main/java/memory_game/Icons/m1.jpg"));
-    ImageIcon[] icons;
-    ImageIcon icon;
+    public static ImageIcon[] icons;
+    public static ImageIcon icon;
     JButton x;
     Random rnd;
     int numOfClicks;
-    int oddClicks;
-    int clicks;
-    int openImages;
-    JLabel scoreBoard;
-    JLabel scoreBoard2;
+   // public int oddClicks;
+   // public int clicks;
+    public int openImages;
+    public static JLabel scoreBoard;
+    public static JLabel scoreBoard2;
     JPanel scoring;
     JPanel map;
     JPanel buttonPnl;
     JButton restart;
     static JLabel number;
-    JFrame f;
-    Timer timer = null;
+    public static JFrame f;
+    public static Timer timer;
     static int score;
     static int score2;
     boolean gameOver;
-    static JButton[] buttons;
+    public static JButton[] buttons;
     static String pics[] = {"Icons/m2.jpg", "Icons/m3.jpg", "Icons/m4.jpg", "Icons/m5.jpg",
             "Icons/m6.jpg", "Icons/m7.jpg", "Icons/m8.jpg", "Icons/m9.jpg", "Icons/m10.jpg",
-            "Icons/m11.jpg", "Icons/m12.jpg", "Icons/m13.jpg","Icons/m14.jpg", "Icons/15.jpg",
+            "Icons/m11.jpg", "Icons/m12.jpg", "Icons/m13.jpg", "Icons/m14.jpg", "Icons/15.jpg",
             "Icons/16.jpg", "Icons/m17.jpg", "Icons/m18.jpg", "Icons/m19.jpg"};
     Game game;
     Board board;
-    
+    AddButtonListener but;
+
 
     //Frame set up
     public GameFrame(Game game) {
@@ -92,8 +91,8 @@ public class GameFrame extends JFrame {
         add(map);
         timer = new Timer(1000, new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
-                buttons[clicks].setIcon(m1);
-                buttons[oddClicks].setIcon(m1);
+                buttons[AddButtonListener.clicks].setIcon(m1);
+                buttons[AddButtonListener.oddClicks].setIcon(m1);
                 timer.stop();
 
             }
@@ -143,59 +142,14 @@ public class GameFrame extends JFrame {
 
     }
 //J'ai pas su mettre addbuttonlistener dans une classe a part -> problem avec le timer
-    class AddButtonListener implements ActionListener {
-        int nbButton = this.game.board.columns * this.game.board.rows;
-        //jeux se lance si tu remplace nbButton par 16
-        public void actionPerformed(ActionEvent e) {
-            if (timer.isRunning())
-                return;
-
-            openImages++;
-            System.out.println(openImages);
-
-            for (int i = 0; i < nbButton; i++) {
-                if (e.getSource() == buttons[i]) {
-                    buttons[i].setIcon(icons[i]);
-                    clicks = i;
-                }
-            }
-            if (openImages % 2 == 0) {
-                if (clicks == oddClicks) {
-                    clicks--;
-                    return;
-                }
-                if (icons[clicks] != icons[oddClicks]) {
-                    timer.start();
-                } else {
-                    score++;
-                    scoreBoard2.setText(Integer.toString(score * 100));
-                    if (score == nbButton/2) {
-
-                        scoreBoard.setText(" You won!");
-                        JOptionPane.showMessageDialog(f, "You won!");
-                        HighscoreDB database = new HighscoreDB();
-                        Player p = new Player("Me", scoreBoard2.getText());
-                        database.insertScore(p);
-                    }
-                }
-            } else {
-                oddClicks = clicks;
-            }
-
-            /*class TimerListener implements ActionListener {
-                public void actionPerformed(ActionEvent e) {
-                    buttons[clicks].setIcon(m1);
-                    buttons[oddClicks].setIcon(m1);
-                    timer.stop();
-
-             */
 
 
-        }
 
-
-    }
 }
+
+
+
+
 
 
 

@@ -2,13 +2,13 @@ package main.java.memory_game.models;
 
 public class Board {
 
-    public int rows;
-    public int columns;
+    public static int rows;
+    public static int columns;
     public int interval;
 
     public Board(int rows, int columns) {
-        this.rows = rows;
-        this.columns = columns;
+        Board.rows = rows;
+        Board.columns = columns;
     }
 
     public int getRows() {

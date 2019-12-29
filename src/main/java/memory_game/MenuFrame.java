@@ -85,6 +85,7 @@ public class MenuFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 Game g;
+                f.pack();
                 if(b1.isSelected() && b4.isSelected())
                     g = new Game(EASY,CPU);
                 else if(b2.isSelected() && b4.isSelected())

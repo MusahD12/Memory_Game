@@ -34,7 +34,7 @@ public class GameFrame extends JFrame {
     static int score2;
     boolean gameOver;
     public static JButton[] buttons;
-    static String pics[] = {"Icons/m2.jpg", "Icons/m3.jpg", "Icons/m4.jpg", "Icons/m5.jpg",
+    private static String[] pics = {"Icons/m2.jpg", "Icons/m3.jpg", "Icons/m4.jpg", "Icons/m5.jpg",
             "Icons/m6.jpg", "Icons/m7.jpg", "Icons/m8.jpg", "Icons/m9.jpg", "Icons/m10.jpg",
             "Icons/m11.jpg", "Icons/m12.jpg", "Icons/m13.jpg", "Icons/m14.jpg", "Icons/15.jpg",
             "Icons/16.jpg", "Icons/m17.jpg", "Icons/m18.jpg", "Icons/m19.jpg"};
@@ -48,22 +48,22 @@ public class GameFrame extends JFrame {
         setTitle("Anime Memory Game");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
-        setSize(400, 400);
+        //setBackground(Color.BLACK);
+        //setSize(400, 400);
         this.game = game;
         createButtons();
         createScoreBoard();
-
-
     }
 
     //buttons
     public void createButtons() {
-        int nbButton = this.game.board.columns * this.game.board.rows;
+        int nbButton = Board.columns * Board.rows;
         icons = new ImageIcon[nbButton];
         buttons = new JButton[nbButton];
         map = new JPanel();
-        map.setLayout(new GridLayout(this.game.board.rows, this.game.board.columns, 10, 10));
+        map.setLayout(new GridLayout(Board.rows, Board.columns, 10, 10));
         map.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        map.setBackground(Color.BLACK);
         for (int i = 0, j = 0; i < nbButton / 2; i++) {
             buttons[j] = new JButton("");
             icons[j] = new ImageIcon(this.getClass().getResource(pics[i]));
@@ -89,6 +89,7 @@ public class GameFrame extends JFrame {
         }
 
         add(map);
+        pack();
         timer = new Timer(1000, new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 buttons[AddButtonListener.clicks].setIcon(m1);
@@ -124,9 +125,8 @@ public class GameFrame extends JFrame {
 
     }
 
-
     public void restart() {
-        int nbButton = this.game.board.columns * this.game.board.rows;
+        int nbButton = Board.columns * Board.rows;
 
 
         for (int i = 0; i < nbButton; i++) {
@@ -141,10 +141,6 @@ public class GameFrame extends JFrame {
         scoreBoard2.setText(Integer.toString(score = 0));
 
     }
-//J'ai pas su mettre addbuttonlistener dans une classe a part -> problem avec le timer
-
-
-
 }
 
 

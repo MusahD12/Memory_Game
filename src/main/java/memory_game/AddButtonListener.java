@@ -22,7 +22,7 @@ public class AddButtonListener implements ActionListener {
 
     //jeux se lance si tu remplace nButton par 16
     public void actionPerformed(ActionEvent e) {
-        int nButton = this.game.board.columns * this.game.board.rows;;
+        int nButton = Board.columns * Board.rows;;
 
 
         if (GameFrame.timer.isRunning())

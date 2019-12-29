@@ -13,12 +13,13 @@ public class Game {
                 this.board = new Board(4,4);
                 break;
             case MEDIUM:
-                this.board = new Board(4, 6);
+                this.board = new Board(6, 4);
                 break;
             case GOODLUCK:
                 this.board = new Board(4, 5);
                 break;
         }
+        //switch (opponentType);
     }
 
     public Board getBoard() {

@@ -7,6 +7,11 @@ import main.java.memory_game.models.OpponentType;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
+/**
+ * This is the main factory, by being abstract with this class you can only have a CPU GameStrategy or a Human Game
+ * Strategy.
+ * This can allow you in the future to add more specfic behavior but it's one behavior by game
+ */
 public abstract class GameFactory implements ActionListener {
 
     public Game game;

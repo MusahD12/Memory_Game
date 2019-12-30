@@ -8,6 +8,7 @@ import static main.java.memory_game.models.Level.MEDIUM;
 
 /**
  * Builder pattern is used to simplify the creation of Game's object.
+ * With this pattern we can build multiple game we want, just by setting the builder see MenuFrame.java to understand.
  */
 public class Game {
 

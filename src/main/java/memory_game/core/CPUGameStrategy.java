@@ -11,6 +11,9 @@ import static main.java.memory_game.models.Level.EASY;
 import static main.java.memory_game.models.Level.GOODLUCK;
 import static main.java.memory_game.models.Level.MEDIUM;
 
+/**
+ * This class is used to use a specific behavior versus the computer ( in fact your are playing alone )
+ */
 public class CPUGameStrategy extends GameFactory implements ActionListener {
 
     public CPUGameStrategy(Game game) {

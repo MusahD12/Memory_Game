@@ -9,7 +9,8 @@ import java.util.Random;
 import java.util.TimerTask;
 
 /**
- *
+ * This is the main factory, this factory as the other one (GameFactory) will create a specific board depending on the ennemy.
+ * this factory is use just for the user interface, you can add specific user interface related to the board.
  */
 public abstract class GameFrameFactory extends JFrame {
 

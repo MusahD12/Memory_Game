@@ -14,6 +14,9 @@ import static main.java.memory_game.core.GameFrameHUMAN.scoreBoardP2;
 import static main.java.memory_game.core.GameFrameHUMAN.user2;
 import static main.java.memory_game.models.Level.*;
 
+/**
+ * This class is used to use a specific behavior versus another user
+ */
 public class HUMANGameStrategy extends GameFactory implements ActionListener {
 
 

@@ -7,6 +7,9 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
+/**
+ * This class is using the GameFrameFactory we used it to allow a second user to play in the interface.
+ */
 public class GameFrameHUMAN extends GameFrameFactory {
 
 

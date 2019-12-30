@@ -7,6 +7,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * It's easier to use a file than a real database such as (Postgresql mysql or mongo)
+ * That's the best way to keep score in the application without using any database server .
+ */
 public class HighscoreDB {
 
     private static final String HIGHSCORE_DB = "src/main/java/memory_game/database/database.csv";

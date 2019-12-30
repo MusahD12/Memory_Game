@@ -68,20 +68,20 @@ public class Game {
 
         public GameBuilder easyLevel() {
             this.level = EASY;
-            this.board = new Board(4, 5);
+            this.board = new Board(4, 4);
             return this;
         }
 
         public GameBuilder mediumLevel() {
             this.level = MEDIUM;
-            this.board = new Board(6, 4);
+            this.board = new Board(5, 4);
 
             return this;
         }
 
         public GameBuilder goodLuckLevel() {
             this.level = GOODLUCK;
-            this.board = new Board(4, 4);
+            this.board = new Board(6, 4);
             return this;
         }
 

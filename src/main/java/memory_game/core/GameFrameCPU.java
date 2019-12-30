@@ -5,7 +5,11 @@ import main.java.memory_game.models.Game;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-
+/**
+ * 
+ * contains all the starting menu settings and visuals
+ *
+ */
 public class GameFrameCPU extends GameFrameFactory {
     public GameFrameCPU(Game game) {
         super(game);

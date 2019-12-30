@@ -23,10 +23,9 @@ public class HighscoreDB {
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             while ((line = br.readLine()) != null) {
+                System.out.println(line);
                 String[] l = line.split(";");
-                System.out.println(l[0]);
-                System.out.println(l[1]);
-                players.add(new Player(l[0], l[1]));
+                players.add(new Player(l[0], l[1], l[2]));
             }
             // Sort the list of players by score
             players.sort((player1, player2) -> Integer.compare(player2.score, player1.score));
@@ -47,9 +46,9 @@ public class HighscoreDB {
     public void insertScore(Player player) {
 
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(HIGHSCORE_DB));
-            String line = player.name.concat(";").concat(Integer.toString(player.score));
-            writer.write(line);
+            BufferedWriter writer = new BufferedWriter(new FileWriter(HIGHSCORE_DB, true));
+            String line = player.formatToSave();
+            writer.write(line.concat("\r\n"));
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();

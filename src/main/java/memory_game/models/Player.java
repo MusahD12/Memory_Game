@@ -3,10 +3,12 @@ package main.java.memory_game.models;
 public class Player {
     public String name;
     public int score;
+    public String level;
 
-    public Player(String name, String score) {
+    public Player(String name, String score, String level) {
         this.name = name;
         this.score = Integer.parseInt(score);
+        this.level = level;
     }
 
     public String getName() {
@@ -27,6 +29,11 @@ public class Player {
 
     @Override
     public String toString() {
-        return name +"\t"+ score;
+        return name + " | " + score + " | " + level ;
     }
+
+    public String formatToSave(){
+        return name+";"+score+";"+level;
+    }
+
 }

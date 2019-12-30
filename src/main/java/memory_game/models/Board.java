@@ -2,11 +2,10 @@ package main.java.memory_game.models;
 //Creation of a dynamic board that changes with setting
 public class Board {
 
-    public static int rows;
-    public static int columns;
-    public int interval;
+    private int rows;
+    private int columns;
 
-    Board(int rows, int columns) {
+    public Board(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
     }

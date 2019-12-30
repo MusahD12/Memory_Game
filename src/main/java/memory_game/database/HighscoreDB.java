@@ -5,19 +5,18 @@ import main.java.memory_game.models.Player;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class HighscoreDB {
 
-    public static final String HIGHSCORE_DB = "src/main/java/memory_game/database/database.csv";
+    private static final String HIGHSCORE_DB = "src/main/java/memory_game/database/database.csv";
 
     public HighscoreDB() {
     }
 
     public Player[] getAllScore() {
-        String line = "";
-        List<Player> players = new ArrayList<Player>();
+        String line;
+        List<Player> players = new ArrayList<>();
         // Retrieve all players in the memory_game.database (file memory_game.database.csv)
 
         File file = new File(HIGHSCORE_DB);
@@ -30,23 +29,13 @@ public class HighscoreDB {
                 players.add(new Player(l[0], l[1]));
             }
             // Sort the list of players by score
-            players.sort(new Comparator<Player>() {
-                @Override
-                public int compare(Player player1, Player player2) {
-                    return player1.score > player2.score ? -1
-                            : player1.score < player2.score ? 1
-                            : 0;
-                }
-            });
-            // to transform list to array (cause we can only sort with a list) (avoid implementation of our own algorithm to sort)
-            return players.stream().toArray(Player[]::new);
+            players.sort((player1, player2) -> Integer.compare(player2.score, player1.score));
+            // Transform list to array since we can only sort with a list
+            return players.toArray(new Player[0]);
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return players.stream().toArray(Player[]::new);
         } catch (IOException e) {
             e.printStackTrace();
-            return players.stream().toArray(Player[]::new);
+            return players.toArray(new Player[0]);
         }
 
     }

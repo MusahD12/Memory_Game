@@ -1,6 +1,5 @@
 package main.java.memory_game;
 
-import main.java.memory_game.GameFrame;
 import main.java.memory_game.models.Board;
 import main.java.memory_game.database.HighscoreDB;
 import main.java.memory_game.models.Game;
@@ -13,25 +12,20 @@ import java.awt.event.ActionListener;
 import static main.java.memory_game.GameFrame.*;
 
 public class AddButtonListener implements ActionListener {
-    public static int oddClicks;
-    public static int clicks;
-    static int openImages;
-    //static int score;
-    public static int scoreC;
+    static int oddClicks;
+    static int clicks;
+    private static int openImages;
+    static int scoreC;
     Game game;
     GameFrame gameFrame;
     Board board;
-    HighscoreDB database;
-    Player p1;
-    Player p2;
-    Player p3;
 
-
+// tile logic
     public void actionPerformed(ActionEvent e) {
-        database = new HighscoreDB();
-        p1 = new Player("Your highest score in easy: ", scoreBoard2.getText());
-        p2 = new Player("Your highest score in medium: ", scoreBoard2.getText());
-        p3 = new Player("Your highest score in Goodluck: ", scoreBoard2.getText());
+        HighscoreDB database = new HighscoreDB();
+        Player p1 = new Player("Your highest score in easy: ", scoreBoard2.getText());
+        Player p2 = new Player("Your highest score in medium: ", scoreBoard2.getText());
+        Player p3 = new Player("Your highest score in Goodluck: ", scoreBoard2.getText());
         int nButton = Board.columns * Board.rows;
         int z = 400 - 2 * openImages;
         if (nButton == 24 || nButton == 16){

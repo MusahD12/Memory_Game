@@ -6,27 +6,22 @@ import main.java.memory_game.database.HighscoreDB;
 import main.java.memory_game.models.Player;
 
 import javax.swing.*;
-import java.awt.*;
-
+// creation of separate window for score
 public class HighScoreFrame extends JFrame {
 
-    JFrame hFrame;
-    JPanel p1Panel;
-    JList players;
-    HighscoreDB database;
-    Player[] listPlayer;
+    private HighscoreDB database;
 
-    public HighScoreFrame() {
+    HighScoreFrame() {
         this.database = new HighscoreDB();
-        createPlanel();
+        createPanel();
     }
 
-    private void createPlanel() {
+    private void createPanel() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        hFrame = new JFrame();
-        p1Panel = new JPanel();
-        listPlayer = database.getAllScore();
-        players = new JList(listPlayer);
+        JFrame hFrame = new JFrame();
+        JPanel p1Panel = new JPanel();
+        Player[] listPlayer = database.getAllScore();
+        JList<Player> players = new JList<>(listPlayer);
         p1Panel.add(players);
         hFrame.add(p1Panel);
         hFrame.setVisible(true);

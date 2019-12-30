@@ -1,5 +1,5 @@
 package main.java.memory_game.models;
-
+// Game creation based on settings
 public class Game {
     public Level level;
     public OpponentType opponentType;

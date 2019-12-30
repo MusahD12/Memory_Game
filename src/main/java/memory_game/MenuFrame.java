@@ -1,6 +1,6 @@
 package main.java.memory_game;
 
-import main.java.memory_game.models.Board;
+
 import main.java.memory_game.models.Game;
 
 import javax.swing.*;
@@ -14,48 +14,33 @@ import static main.java.memory_game.models.OpponentType.HUMAN;
 
 public class MenuFrame {
 
-    JLabel  setDifficulty;
-    JLabel players;
-    JTextField namePlayer1;
-    JTextField namePlayer2;
-    JLabel oponnent;
-    JButton about;
-    JButton highscore;
-    JButton start;
-    JRadioButton b1;
-    JRadioButton  b2;
-    JRadioButton b3;
-    JRadioButton  b4;
-    JRadioButton  b5;
-    ButtonGroup g1;
-    ButtonGroup g2;
-    JPanel menu;
-    JPanel menu2;
-    JPanel menu3;
-    JPanel menu4;
-    JFrame f;
+    private JTextField namePlayer2;
+    private JRadioButton b1;
+    private JRadioButton  b2;
+    private JRadioButton b3;
+    private JRadioButton  b4;
+    private JRadioButton  b5;
+    private JPanel menu;
+    private JFrame f;
 
     // Set Up Configuration Game
 
     public MenuFrame (){
         f = new JFrame("Menu");
         menu = new JPanel();
-        menu2 = new JPanel();
-        menu3 = new JPanel();
-        menu4 = new JPanel();
-        //menu = new JLabel("Game Setting",JLabel.RIGHT);
-        players = new JLabel("Player:", JLabel.LEFT);
-        namePlayer1 = new JTextField();
+        JPanel menu2 = new JPanel();
+        JPanel menu3 = new JPanel();
+        JPanel menu4 = new JPanel();
+        JLabel players = new JLabel("Player:", JLabel.LEFT);
+        JTextField namePlayer1 = new JTextField();
         namePlayer2 = new JTextField("CPU");
-        setDifficulty= new JLabel("Difficulty:", JLabel.LEFT);
-        oponnent = new JLabel("Select oponnent:",JLabel.LEFT);
-        about = new JButton("About Game");
-        //about.setBounds(10,10,20,20);
-        //about.setBorder(BorderFactory.createEmptyBorder(50,50,50,50));
-        highscore = new JButton("High Score");
-        start = new JButton("Start");
-        g1 = new ButtonGroup();
-        g2 = new ButtonGroup();
+        JLabel setDifficulty = new JLabel("Difficulty:", JLabel.LEFT);
+        JLabel oponnent = new JLabel("Select oponnent:", JLabel.LEFT);
+        JButton about = new JButton("About Game");
+        JButton highscore = new JButton("High Score");
+        JButton start = new JButton("Start");
+        ButtonGroup g1 = new ButtonGroup();
+        ButtonGroup g2 = new ButtonGroup();
         b1 = new JRadioButton ("Easy", true);
         b2 = new JRadioButton ("Medium");
         b3 = new JRadioButton ("Goodluck");
@@ -66,61 +51,47 @@ public class MenuFrame {
         b5 = new JRadioButton ("Another Player");
         g2.add(b4);
         g2.add(b5);
-        b5.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent itemEvent) {
-                if (itemEvent.getStateChange() == 1 ){
-                    menu.add(namePlayer2);
-                    f.pack();
-                } else {
-                    menu.remove(namePlayer2);
-                    f.pack();
-                }
+        b5.addItemListener(itemEvent -> {
+            if (itemEvent.getStateChange() == ItemEvent.SELECTED){
+                menu.add(namePlayer2);
+                f.pack();
+            } else {
+                menu.remove(namePlayer2);
+                f.pack();
             }
         });
 
-        start.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                Game g;
-                f.pack();
-                if(b1.isSelected() && b4.isSelected())
-                    g = new Game(EASY,CPU);
-                else if(b2.isSelected() && b4.isSelected())
-                    g = new Game(MEDIUM,CPU);
-                else if(b3.isSelected() && b4.isSelected())
-                    g = new Game(GOODLUCK,CPU);
-                else if(b1.isSelected() && b5.isSelected())
-                    g = new Game(GOODLUCK,HUMAN);
-                else if(b1.isSelected() && b5.isSelected())
-                    g = new Game(GOODLUCK,HUMAN);
-                else if(b1.isSelected() && b5.isSelected())
-                    g = new Game(GOODLUCK,HUMAN);
-                else
-                    g = new Game(EASY,CPU);
+        start.addActionListener(actionEvent -> {
+            Game g;
+            f.pack();
+            if(b1.isSelected() && b4.isSelected())
+                g = new Game(EASY,CPU);
+            else if(b2.isSelected() && b4.isSelected())
+                g = new Game(MEDIUM,CPU);
+            else if(b3.isSelected() && b4.isSelected())
+                g = new Game(GOODLUCK,CPU);
+            else if(b1.isSelected() && b5.isSelected())
+                g = new Game(GOODLUCK,HUMAN);
+            else if(b1.isSelected() && b5.isSelected())
+                g = new Game(GOODLUCK,HUMAN);
+            else if(b1.isSelected() && b5.isSelected())
+                g = new Game(GOODLUCK,HUMAN);
+            else
+                g = new Game(EASY,CPU);
 
-                new GameFrame(g);
-            }
+            new GameFrame(g);
         });
         start.addMouseListener(new MouseClicked());
-        about.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                try {
-                    Desktop.getDesktop().open(new java.io.File ("C:\\Users\\musad\\git\\Memory Game\\src\\main\\File\\instructions.txt"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
+        about.addActionListener(actionEvent -> {
+            try {
+                Desktop.getDesktop().open(new File ("C:\\Users\\musad\\git\\Memory Game\\src\\main\\File\\instructions.txt"));
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+
         });
 
-        highscore.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                new HighScoreFrame();
-            }
-        });
+        highscore.addActionListener(actionEvent -> new HighScoreFrame());
 
         f.add(menu);
         f.add(menu2);
@@ -142,7 +113,6 @@ public class MenuFrame {
         menu2.setLayout(new GridLayout(1,4));
         menu4.setLayout(new GridLayout(1,3));
         menu3.setLayout(new GridLayout(1,3));
-        //f.setSize(400,200);
         f.setLayout(new GridLayout(4,1));
         f.pack();
         f.setVisible(true);

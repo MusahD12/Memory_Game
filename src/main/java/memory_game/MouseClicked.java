@@ -7,16 +7,13 @@ import java.util.TimerTask;
 
 import static main.java.memory_game.GameFrame.clock;
 import static main.java.memory_game.GameFrame.seconds;
-
+//setting up timer on scoreboard
 public class MouseClicked implements MouseListener {
-    Timer timer2;
-    TimerTask task;
 
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
-        timer2 = new Timer();
-        task = new TimerTask() {
-            @Override
+        Timer timer2 = new Timer();
+        TimerTask task = new TimerTask() {
             public void run() {
                 clock.setText(Integer.toString(seconds));
                 seconds++;

@@ -1,1 +1,16 @@
 this is a test
+
+As you can see, the basic game play is really simple and should be quite familiar, i.e. there are multiple sets of exactly 2 matching tiles (with the images not visible),
+all of which are hidden when the game starts. You first select a tile, which is revealed, and then select a second tile which should match the first tile.
+If they match, both tiles are locked in place with the image facing up (i.e. visible); if they don’t match, both tiles are flipped again and you can move on to the next attempt.
+ This setup constitutes the starting point of your implementation (i.e. only implementing the basic game itself will not suffice). 
+Several options to make the game more challenging need to be provided. For starters, you can play alone against the computer who will try to sabotage you, depending on the difficulty level.
+As such, it’s required to provide different difficulty levels which affect certain aspects of the game.
+A high difficulty level may lead to a timer being activated which requires a player to find 2 matching tiles within a certain time (look at the Timer class in Java).
+Potential sabotage actions from the computer could be: replacing a tile with a ‘bomb’ tile that triggers a certain action, shuffling (a subset of) the tiles,
+ … You may also include bonus tiles that give a player an advantage, e.g. taking an extra turn right after the current turn.
+You can also have another (human) player as your opponent, so the game is always played with 2 players, and a score is kept for each player at all times.
+ You can decide for yourself which scoring system you use, i.e. it can simply be based on the number of matching tiles each player is able to find,
+it can take into account the time it takes each player to find matching tiles. Typically, the game finishes when all tiles have been turned, 
+but this is also up to you and you may devise a different set of rules. Importantly, the scoring function needs to be different for each player 
+(e.g. because the second player has an advantage as he/she already saw the move of the first player), whether the player is human or the computer.

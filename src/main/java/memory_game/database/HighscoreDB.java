@@ -21,7 +21,6 @@ public class HighscoreDB {
         // Retrieve all players in the memory_game.database (file memory_game.database.csv)
 
         File file = new File(HIGHSCORE_DB);
-        System.out.println(file.exists());
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             while ((line = br.readLine()) != null) {

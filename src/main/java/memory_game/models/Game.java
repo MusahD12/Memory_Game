@@ -10,13 +10,13 @@ public class Game {
     public Game(Level level, OpponentType opponentType) {
         switch (level) {
             case EASY:
-                this.board = new Board(4,4);
+                this.board = new Board(4,5);
                 break;
             case MEDIUM:
                 this.board = new Board(6, 4);
                 break;
             case GOODLUCK:
-                this.board = new Board(4, 5);
+                this.board = new Board(4, 4);
                 break;
         }
         //switch (opponentType);

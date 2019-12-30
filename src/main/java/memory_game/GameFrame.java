@@ -46,6 +46,7 @@ public class GameFrame extends JFrame {
             "Icons/m11.jpg", "Icons/m12.jpg", "Icons/m13.jpg", "Icons/m14.jpg", "Icons/15.jpg",
             "Icons/16.jpg", "Icons/m17.jpg", "Icons/m18.jpg", "Icons/m19.jpg"};
     Game game;
+    int nbButton = Board.columns * Board.rows;
     Board board;
     AddButtonListener but;
     MenuFrame menu;
@@ -57,8 +58,6 @@ public class GameFrame extends JFrame {
         setTitle("Anime Memory Game");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
-        //setBackground(Color.BLACK);
-        //setSize(400, 400);
         this.game = game;
         createButtons();
         createScoreBoard();
@@ -129,19 +128,7 @@ public class GameFrame extends JFrame {
         restart = new JButton("Restart");
         restart.setBackground(Color.RED);
         restart.setForeground(Color.BLACK);
-        /*
-        settings = new JButton("Settings");
-        settings.setBackground(Color.RED);
-        settings.setForeground(Color.BLACK);
-        settings.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                menu.f.toFront();
 
-            }
-        });
-
-         */
 
 
         restart.addActionListener(new ActionListener() {
@@ -162,10 +149,16 @@ public class GameFrame extends JFrame {
     }
 
     public void restart() {
-        int nbButton = Board.columns * Board.rows;
+
+      random();
+        scoreBoard2.setText(Integer.toString(score = 0));
+        clock.setText(Integer.toString(seconds = 0));
+        score = 0;
+        AddButtonListener.scoreC= 0;
 
 
-
+    }
+    public void random(){
         for (int i = 0; i < nbButton; i++) {
             buttons[i].setIcon(m1);
             buttons[i].setEnabled(true);
@@ -176,27 +169,32 @@ public class GameFrame extends JFrame {
             icons[i] = icons[j];
             icons[j] = icon;
         }
-        scoreBoard2.setText(Integer.toString(score = 0));
-        clock.setText(Integer.toString(seconds = 0));
-        score = 0;
-        AddButtonListener.scoreC= 0;
+    }
 
+
+    public void random2(){
+        for (int i = 0; i < nbButton; i++) {
+            buttons[i].setIcon(icons[i]);}
+
+        for (int i = 0; i < nbButton; i++) {
+            buttons[i].setIcon(m1);
+
+        }
+        for (int i = 0; i < nbButton; i++) {
+                buttons[i].setIcon(icons[i]);}
+
+        for (int i = 0; i < nbButton; i++) {
+            int j = rnd.nextInt(nbButton);
+            icon = icons[i];
+            icons[i] = icons[j];
+            icons[j] = icon;
+        }
+    }
 
     }
 
 
-    public void restart2(){
 
-       removeAll();
-       setVisible(false);
-       createButtons();
-       setVisible(true);
-
-
-    }
-
-
-}
 
 
 

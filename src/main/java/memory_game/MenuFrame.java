@@ -6,6 +6,7 @@ import main.java.memory_game.models.Game;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
 
 import static main.java.memory_game.models.Level.*;
 import static main.java.memory_game.models.OpponentType.CPU;
@@ -102,6 +103,17 @@ public class MenuFrame {
             }
         });
         start.addMouseListener(new MouseClicked());
+        about.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    Desktop.getDesktop().open(new java.io.File ("C:\\Users\\musad\\git\\Memory Game\\src\\main\\File\\instructions.txt"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
 
         highscore.addActionListener(new ActionListener() {
             @Override

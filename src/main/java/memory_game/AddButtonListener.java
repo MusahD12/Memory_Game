@@ -17,12 +17,14 @@ public class AddButtonListener implements ActionListener {
     public static int clicks;
     static int openImages;
     static int score;
+    static int scoreC;
     Game game;
     GameFrame gameFrame;
     Board board;
 
 
     public void actionPerformed(ActionEvent e) {
+        int z = score *100 - (5 * seconds);
         int nButton = Board.columns * Board.rows;;
 
         if (timer.isRunning())
@@ -30,9 +32,6 @@ public class AddButtonListener implements ActionListener {
 
 
         openImages++;
-        System.out.println(openImages);
-        System.out.println(timer.isRunning());
-        System.out.println(clicks);
 
         for (int i = 0; i < nButton; i++) {
             if (e.getSource() == buttons[i]) {
@@ -53,9 +52,9 @@ public class AddButtonListener implements ActionListener {
                 buttons[oddClicks].setEnabled(false);
                 buttons[oddClicks].setDisabledIcon(icons[oddClicks]);
                 score++;
-                scoreBoard2.setText(Integer.toString(score * 100));
-                if (score == nButton/2) {
-
+                scoreC++;
+                scoreBoard2.setText(Integer.toString(z));
+                if (scoreC == nButton/2) {
                     scoreBoard.setText(" You won!");
                     JOptionPane.showMessageDialog(f, "You won!");
                     HighscoreDB database = new HighscoreDB();

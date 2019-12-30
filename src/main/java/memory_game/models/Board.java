@@ -7,8 +7,8 @@ public class Board {
     public int interval;
 
     public Board(int rows, int columns) {
-        Board.rows = rows;
-        Board.columns = columns;
+        this.rows = rows;
+        this.columns = columns;
     }
 
     public int getRows() {

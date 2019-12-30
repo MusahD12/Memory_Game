@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
+//import static main.java.memory_game.TimePassed.seconds;
+
 public class GameFrame extends JFrame {
 
     ImageIcon m1 = new ImageIcon(this.getClass().getResource("Icons/m1.jpg"));
@@ -24,6 +26,9 @@ public class GameFrame extends JFrame {
     public int openImages;
     public static JLabel scoreBoard;
     public static JLabel scoreBoard2;
+    JLabel time;
+    public static JLabel clock;
+    JButton settings;
     JPanel scoring;
     JPanel map;
     JPanel buttonPnl;
@@ -32,6 +37,7 @@ public class GameFrame extends JFrame {
     public static JFrame f;
     public static Timer timer;
     static int score;
+    public static int seconds;
     static int score2;
     boolean gameOver;
     public static JButton[] buttons;
@@ -42,6 +48,8 @@ public class GameFrame extends JFrame {
     Game game;
     Board board;
     AddButtonListener but;
+    MenuFrame menu;
+
 
 
     //Frame set up
@@ -104,15 +112,38 @@ public class GameFrame extends JFrame {
 
     public void createScoreBoard() {
         score = 0;
+        seconds = 0;
         scoring = new JPanel();
         scoreBoard = new JLabel("Score");
         scoreBoard2 = new JLabel("" + score);
+        time = new JLabel("Time passed: ");
+        clock = new JLabel("Time passed: "+ seconds);
+        //clock.setText("Time passed: " );
         scoreBoard2.setForeground(Color.RED);
+        clock.setForeground(Color.WHITE);
+        clock.setText(Integer.toString(seconds));
         //scoreBoard.setFont(new Font("TimesRoman", Font.BOLD, 36));
         scoring.setBackground(Color.BLACK);
         //scoring.setLayout( new BorderLayout.EAST);
         scoring.setBorder(BorderFactory.createTitledBorder(LineBorder.createBlackLineBorder(), "ScoreBoard"));
         restart = new JButton("Restart");
+        restart.setBackground(Color.RED);
+        restart.setForeground(Color.BLACK);
+        /*
+        settings = new JButton("Settings");
+        settings.setBackground(Color.RED);
+        settings.setForeground(Color.BLACK);
+        settings.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                menu.f.toFront();
+
+            }
+        });
+
+         */
+
+
         restart.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 restart();
@@ -121,6 +152,9 @@ public class GameFrame extends JFrame {
         scoring.add(scoreBoard);
         scoring.add(scoreBoard2);
         scoring.add(restart);
+        scoring.add(settings);
+        scoring.add(time);
+        scoring.add(clock);
 
         add(scoring, BorderLayout.NORTH);
 
@@ -132,6 +166,7 @@ public class GameFrame extends JFrame {
 
         for (int i = 0; i < nbButton; i++) {
             buttons[i].setIcon(m1);
+            buttons[i].setEnabled(true);
         }
         for (int i = 0; i < nbButton; i++) {
             int j = rnd.nextInt(nbButton);
@@ -140,6 +175,7 @@ public class GameFrame extends JFrame {
             icons[j] = icon;
         }
         scoreBoard2.setText(Integer.toString(score = 0));
+        clock.setText(Integer.toString(seconds = 0));
 
     }
 }

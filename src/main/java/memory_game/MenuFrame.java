@@ -5,10 +5,7 @@ import main.java.memory_game.models.Game;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
 
 import static main.java.memory_game.models.Level.*;
 import static main.java.memory_game.models.OpponentType.CPU;
@@ -104,6 +101,7 @@ public class MenuFrame {
                 new GameFrame(g);
             }
         });
+        start.addMouseListener(new MouseClicked());
 
         highscore.addActionListener(new ActionListener() {
             @Override

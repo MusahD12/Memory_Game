@@ -147,12 +147,13 @@ public class GameFrame extends JFrame {
         restart.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 restart();
+                //createButtons();
             }
         });
         scoring.add(scoreBoard);
         scoring.add(scoreBoard2);
         scoring.add(restart);
-        scoring.add(settings);
+        //scoring.add(settings);
         scoring.add(time);
         scoring.add(clock);
 
@@ -162,6 +163,7 @@ public class GameFrame extends JFrame {
 
     public void restart() {
         int nbButton = Board.columns * Board.rows;
+
 
 
         for (int i = 0; i < nbButton; i++) {
@@ -176,8 +178,24 @@ public class GameFrame extends JFrame {
         }
         scoreBoard2.setText(Integer.toString(score = 0));
         clock.setText(Integer.toString(seconds = 0));
+        score = 0;
+        AddButtonListener.scoreC= 0;
+
 
     }
+
+
+    public void restart2(){
+
+       removeAll();
+       setVisible(false);
+       createButtons();
+       setVisible(true);
+
+
+    }
+
+
 }
 
 

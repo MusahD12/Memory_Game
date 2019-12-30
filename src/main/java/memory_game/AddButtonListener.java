@@ -16,22 +16,26 @@ public class AddButtonListener implements ActionListener {
    public static int oddClicks;
     public static int clicks;
     static int openImages;
-    static int score;
-    static int scoreC;
+    //static int score;
+    public static int scoreC;
     Game game;
     GameFrame gameFrame;
     Board board;
 
 
     public void actionPerformed(ActionEvent e) {
-        int z = score *100 - (5 * seconds);
-        int nButton = Board.columns * Board.rows;;
+        int nButton = Board.columns * Board.rows;
+        int z = 100;
+        if (nButton == 24 || nButton == 20){
+             z =  100 - (5 * seconds);
+        }
 
         if (timer.isRunning())
             return;
 
 
         openImages++;
+
 
         for (int i = 0; i < nButton; i++) {
             if (e.getSource() == buttons[i]) {
@@ -53,7 +57,8 @@ public class AddButtonListener implements ActionListener {
                 buttons[oddClicks].setDisabledIcon(icons[oddClicks]);
                 score++;
                 scoreC++;
-                scoreBoard2.setText(Integer.toString(z));
+                System.out.println(scoreC);
+                scoreBoard2.setText(Integer.toString(score*z));
                 if (scoreC == nButton/2) {
                     scoreBoard.setText(" You won!");
                     JOptionPane.showMessageDialog(f, "You won!");
@@ -66,6 +71,7 @@ public class AddButtonListener implements ActionListener {
             oddClicks = clicks;
 
         }
+
 
 
 
